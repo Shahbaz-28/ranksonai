@@ -171,48 +171,14 @@ export default function LandingPage() {
                     {/* Main Content */}
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="relative w-full h-full overflow-hidden">
-                        {/* Product Image 1 - Plan your schedules */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeCard === 0 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                            }`}
-                        >
-                          <Image
-                            src="/ranksonai.png"
-                            alt="Ranksonai AI Visibility Dashboard - Citation and Recommendation Tracking"
-                            fill
-                            sizes="(max-width: 1400px) 100vw, 1300px"
-                            className="object-cover"
-                            priority
-                          />
-                        </div>
-
-                        {/* Product Image 2 - Data to insights */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeCard === 1 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                            }`}
-                        >
-                          <Image
-                            src="/analytics-dashboard-with-charts-graphs-and-data-vi.jpg"
-                            alt="Analytics Dashboard"
-                            fill
-                            sizes="(max-width: 1400px) 100vw, 1300px"
-                            className="object-cover"
-                          />
-                        </div>
-
-                        {/* Product Image 3 - Data visualization */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeCard === 2 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                            }`}
-                        >
-                          <Image
-                            src="/data-visualization-dashboard-with-interactive-char.jpg"
-                            alt="Data Visualization Dashboard"
-                            fill
-                            sizes="(max-width: 1400px) 100vw, 1300px"
-                            className="object-contain" // Preserves landscape aspect ratio
-                          />
-                        </div>
+                        <Image
+                          src="/ranksonai.png"
+                          alt="Ranksonai AI Visibility Dashboard - Citation and Recommendation Tracking"
+                          fill
+                          sizes="(max-width: 1400px) 100vw, 1300px"
+                          className="object-cover"
+                          priority
+                        />
                       </div>
                     </div>
                   </div>
