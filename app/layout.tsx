@@ -19,10 +19,10 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Ranksonai - Effortless Custom Contract Billing",
+  title: "Ranksonai",
   description:
-    "Streamline your billing process with seamless automation for every custom contract, tailored by Ranksonai.",
-  generator: 'v0.app'
+    "Ranksonai.",
+  generator: 'sk'
 }
 
 export default function RootLayout({
