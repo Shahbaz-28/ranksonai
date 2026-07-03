@@ -19,18 +19,10 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Ranksonai - Managed B2B AI Search Visibility",
-  description: "Get cited and recommended when buyers ask ChatGPT, Perplexity, and Claude who to hire.",
-  openGraph: {
-    title: "Ranksonai - Managed B2B AI Search Visibility",
-    description: "Get cited and recommended when buyers ask ChatGPT, Perplexity, and Claude who to hire.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ranksonai - Managed B2B AI Search Visibility",
-    description: "Get cited and recommended when buyers ask ChatGPT, Perplexity, and Claude who to hire.",
-  }
+  title: "Ranksonai - B2B AI Visibility & Search Engine Optimization",
+  description:
+    "Get cited and recommended when GTM buyers ask ChatGPT, Perplexity, Gemini, and Claude who to hire.",
+  generator: 'sk'
 }
 
 export default function RootLayout({
