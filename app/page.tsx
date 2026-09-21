@@ -10,6 +10,10 @@ import FAQSection from "../components/faq-section"
 import PricingSection from "../components/pricing-section"
 import CTASection from "../components/cta-section"
 import FooterSection from "../components/footer-section"
+import SiteNav from "../components/site-nav"
+import JsonLd from "../components/json-ld"
+import { faqData } from "@/lib/faq-data"
+import { breadcrumbSchema, faqSchema, jsonLdGraph } from "@/lib/seo"
 
 // Reusable Badge Component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -76,6 +80,7 @@ export default function LandingPage() {
 
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <JsonLd data={jsonLdGraph(faqSchema(faqData), breadcrumbSchema([{ name: "Home", path: "/" }]))} />
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with proper margins */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1400px] lg:w-[1400px] relative flex flex-col justify-start items-start min-h-screen">
@@ -87,58 +92,19 @@ export default function LandingPage() {
 
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-[66px] relative z-10">
             {/* Navigation */}
-            <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] absolute left-0 top-0 flex justify-center items-center z-20 px-6 sm:px-8 md:px-12 lg:px-0">
-              <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
-
-              <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px] h-10 sm:h-11 md:h-12 py-1.5 sm:py-2 px-3 sm:px-4 md:px-4 pr-2 sm:pr-3 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] overflow-hidden rounded-[50px] flex justify-between items-center relative z-30">
-                <div className="flex justify-start items-center">
-                  <div className="flex flex-col justify-center text-[#2F3037] text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-5 font-sans">
-                    Ranksonai
-                  </div>
-                </div>
-                <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-5">
-                  <div className="flex justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-medium leading-[14px] font-sans">
-                        Home
-                      </div>
-                    </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-medium leading-[14px] font-sans">
-                        Pricing
-                      </div>
-                    </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-medium leading-[14px] font-sans">
-                        About
-                      </div>
-                    </div>
-                  </div>
-                  <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
-                    <div className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center">
-                      <div className="flex flex-col justify-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
-                        Log in
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <SiteNav />
 
             {/* Hero Section */}
-            <div className="pt-12 sm:pt-14 md:pt-16 lg:pt-[120px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
+            <main className="pt-12 sm:pt-14 md:pt-16 lg:pt-[120px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-                  <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
-                    Get recommended when
-                    <br />
-                    buyers search AI for you
-                  </div>
-                  <div className="w-full max-w-[620px] lg:w-[620px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Ranksonai finds where AI search engine citations miss your brand,
-                    <br className="hidden sm:block" />
-                    fixes the source signals, and tracks your visibility score.
-                  </div>
+                  <h1 className="w-full max-w-[748.71px] lg:w-[748.71px] mx-auto text-center text-balance text-[#37322F] text-[28px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-normal leading-[1.15] md:leading-[1.1] font-serif px-2 sm:px-4 md:px-0">
+                    Get recommended when buyers search AI for you
+                  </h1>
+                  <p className="w-full max-w-[620px] lg:w-[620px] mx-auto text-center text-pretty text-[rgba(55,50,47,0.80)] text-sm sm:text-base md:text-lg leading-[1.5] md:leading-[1.6] font-sans font-medium px-2 sm:px-4 md:px-0">
+                    Visilm finds where AI search engine citations miss your brand, fixes the source signals, and tracks
+                    your visibility score.
+                  </p>
                 </div>
               </div>
 
@@ -172,8 +138,8 @@ export default function LandingPage() {
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="relative w-full h-full overflow-hidden">
                         <Image
-                          src="/ranksonai.png"
-                          alt="Ranksonai AI Visibility Dashboard - Citation and Recommendation Tracking"
+                          src="/visilm-dashboard.png"
+                          alt="Visilm AI Visibility Dashboard - Citation and Recommendation Tracking"
                           fill
                           sizes="(max-width: 1400px) 100vw, 1300px"
                           className="object-cover"
@@ -247,10 +213,10 @@ export default function LandingPage() {
 
               {/* CTA Section */}
               <CTASection />
+            </main>
 
-              {/* Footer Section */}
-              <FooterSection />
-            </div>
+            {/* Footer Section */}
+            <FooterSection />
           </div>
         </div>
       </div>

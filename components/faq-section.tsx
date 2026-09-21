@@ -2,43 +2,7 @@
 
 import { useState } from "react"
 
-interface FAQItem {
-  question: string
-  answer: string
-}
-
-const faqData: FAQItem[] = [
-  {
-    question: "What is Ranksonai and how does it help?",
-    answer:
-      "Ranksonai is an AI Search Engine Optimization (AEO) and visibility platform. We help B2B brands analyze where they are being recommended in AI search engines (like ChatGPT, Perplexity, Claude, Gemini, etc.), find gaps where competitors are chosen instead, and optimize their online presence to get cited.",
-  },
-  {
-    question: "What engines do we check for visibility?",
-    answer:
-      "We monitor and run queries against all major AI search surfaces, including ChatGPT (OpenAI), Perplexity AI, Claude (Anthropic), Gemini (Google), Grok (xAI), and Copilot (Microsoft), alongside newer emerging search networks.",
-  },
-  {
-    question: "How do you optimize for AI recommendations?",
-    answer:
-      "AI models rely on specific digital signals: structured schema data, third-party comparison guides, authoritative review sites, and clear answer-first page layouts. We analyze what signals the engines use to answer B2B buyer questions and guide you on correcting or improving those source materials.",
-  },
-  {
-    question: "Do we need to write new content or run another marketing channel?",
-    answer:
-      "No, you don't need to run a new channel. Ranksonai focuses on optimizing your existing high-intent pages, documentation, and product comparison sheets, alongside fixing key external signals that AI crawlers scan.",
-  },
-  {
-    question: "How do we measure success and track leads?",
-    answer:
-      "We track your brand's citation share (percentage of times you are recommended for relevant buyer queries), direct inbound traffic from AI engines, and conversion actions on your landing pages, presenting everything in a single, clear dashboard.",
-  },
-  {
-    question: "Is there support for enterprise compliance?",
-    answer:
-      "Yes. Our enterprise tier includes SSO integration, priority custom crawling schedules, SOC 2 compliance support, and a dedicated AI visibility expert to align GTM strategy.",
-  },
-]
+import { faqData } from "@/lib/faq-data"
 
 function ChevronDownIcon({ className }: { className?: string }) {
   return (
@@ -67,9 +31,9 @@ export default function FAQSection() {
       <div className="flex-1 px-4 md:px-12 py-16 md:py-20 flex flex-col lg:flex-row justify-start items-start gap-6 lg:gap-12">
         {/* Left Column - Header */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
-          <div className="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
+          <h2 className="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
             Frequently Asked Questions
-          </div>
+          </h2>
           <div className="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
             Explore your data, build your dashboard,
             <br className="hidden md:block" />

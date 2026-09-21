@@ -1,12 +1,16 @@
+import Link from "next/link"
+
 export default function FooterSection() {
   return (
-    <div className="w-full pt-10 flex flex-col justify-start items-start">
+    <footer className="w-full pt-10 flex flex-col justify-start items-start">
       {/* Main Footer Content */}
       <div className="self-stretch h-auto flex flex-col md:flex-row justify-between items-stretch pr-0 pb-8 pt-0">
         <div className="h-auto p-4 md:p-8 flex flex-col justify-start items-start gap-8">
           {/* Brand Section */}
           <div className="self-stretch flex justify-start items-center gap-3">
-            <div className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">Ranksonai</div>
+            <Link href="/" className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">
+              Visilm
+            </Link>
           </div>
           <div className="text-[rgba(73,66,61,0.90)] text-sm font-medium leading-[18px] font-sans">
             Get cited and recommended in B2B AI search.
@@ -60,15 +64,15 @@ export default function FooterSection() {
               Product
             </div>
             <div className="flex flex-col justify-end items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <Link href="/" className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 Home
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              </Link>
+              <Link href="/pricing" className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 Pricing
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              </Link>
+              <Link href="/pricing" className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 Free AI Visibility Audit
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -76,12 +80,12 @@ export default function FooterSection() {
           <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
             <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">Company</div>
             <div className="flex flex-col justify-center items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <Link href="/about" className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 About us
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              </Link>
+              <Link href="/about" className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 Careers
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -106,6 +110,6 @@ export default function FooterSection() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }

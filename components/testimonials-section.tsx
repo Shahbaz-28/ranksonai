@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "Ranksonai showed us exactly where buyers were asking AI about our software category and seeing our competitors instead. Fixing the source pages was fast, and our citation share doubled in weeks.",
+        "Visilm showed us exactly where buyers were asking AI about our software category and seeing our competitors instead. Fixing the source pages was fast, and our citation share doubled in weeks.",
       name: "Jamie Marshall",
       company: "Co-founder, Exponent",
       image:
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "We used to run expensive SEO campaigns, but B2B GTM has shifted. With Ranksonai, we ensure ChatGPT, Perplexity, and Claude actively cite our platform with accurate data.",
+        "We used to run expensive SEO campaigns, but B2B GTM has shifted. With Visilm, we ensure ChatGPT, Perplexity, and Claude actively cite our platform with accurate data.",
       name: "Sarah Chen",
       company: "VP Growth, TechFlow",
       image:
@@ -38,7 +38,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "Managed AI Visibility is the most important channel we've added this year. Our team doesn't have to manage another tool; Ranksonai finds gaps, corrects them, and reports leads.",
+        "Managed AI Visibility is the most important channel we've added this year. Our team doesn't have to manage another tool; Visilm finds gaps, corrects them, and reports leads.",
       name: "Marcus Rodriguez",
       company: "Head of Marketing, InnovateCorp",
       image:
