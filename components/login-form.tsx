@@ -1,9 +1,11 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function LoginForm() {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -23,8 +25,9 @@ export default function LoginForm() {
     }
 
     setError(null)
-    // TODO: connect to the authentication backend once it is available.
-    setNotice("Sign-in is not connected yet. Request access and we will set your workspace up.")
+    // No auth backend in this build: the demo workspace opens directly.
+    setNotice("Opening the demo workspace…")
+    router.push("/dashboard")
   }
 
   return (
@@ -33,7 +36,8 @@ export default function LoginForm() {
         <div className="flex flex-col gap-1">
           <h1 className="text-[#37322F] text-2xl font-semibold leading-8 font-sans">Log in to Visilm</h1>
           <p className="text-[#605A57] text-[13px] font-normal leading-5 font-sans">
-            Track your AI visibility index, citations, and competitor share.
+            Track your AI visibility index, citations, and competitor share. This demo opens a populated workspace —
+            any valid-looking email and an 8-character password will do.
           </p>
         </div>
 
@@ -118,8 +122,8 @@ export default function LoginForm() {
 
       <p className="text-center text-[#605A57] text-[13px] font-normal leading-5 font-sans">
         No account yet?{" "}
-        <Link href="/pricing" className="text-[#37322F] font-medium hover:underline">
-          Start on the free plan
+        <Link href="/onboarding" className="text-[#37322F] font-medium hover:underline">
+          Set up a workspace
         </Link>
       </p>
     </div>
