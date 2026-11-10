@@ -15,14 +15,10 @@ export const siteConfig = {
     "Visilm tracks whether ChatGPT, Perplexity, Gemini, Claude, Grok, and Copilot recommend your brand to B2B buyers, finds the queries where competitors are cited instead, and fixes the source signals behind them.",
   shortDescription: "Get cited and recommended when B2B buyers ask AI which vendor to hire.",
   locale: "en_US",
-  /**
-   * Social share image. Set this to "/og.png" once a real 1200x630 asset is in
-   * `public/` — until then the metadata below omits the image rather than
-   * pointing at a file that does not exist.
-   */
-  ogImage: "",
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
+  /** Social share image: a real screenshot of the dashboard, 1.94:1. */
+  ogImage: "/dashboard.png",
+  ogImageWidth: 1465,
+  ogImageHeight: 757,
   twitterHandle: "@visilm",
   email: "hello@visilm.com",
   social: ["https://x.com/visilm", "https://www.linkedin.com/company/visilm", "https://github.com/visilm"],

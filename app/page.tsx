@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import FAQSection from "../components/faq-section"
@@ -5,7 +6,6 @@ import PricingSection from "../components/pricing-section"
 import FooterSection from "../components/footer-section"
 import SiteNav from "../components/site-nav"
 import JsonLd from "../components/json-ld"
-import HeroDashboard from "../components/hero-dashboard"
 import HeroAnswerStream from "../components/hero-answer-stream"
 import HeroScoreCheck from "../components/hero-score-check"
 import NeuralField from "../components/neural-field"
@@ -107,7 +107,21 @@ export default function LandingPage() {
 
                 {/* And here is where it lands */}
                 <div className="relative z-10 w-full max-w-[1300px] lg:w-[1300px] px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center mt-16 sm:mt-20 md:mt-24">
-                  <HeroDashboard />
+                  {/* A thin mat around the screenshot: one hairline, a little
+                      white, and a soft lift. Nothing else. */}
+                  <div className="w-full rounded-[14px] bg-white/70 p-1.5 ring-1 ring-[rgba(55,50,47,0.09)] backdrop-blur-sm shadow-[0px_30px_80px_-36px_rgba(55,50,47,0.45)]">
+                    <div className="overflow-hidden rounded-[9px] ring-1 ring-[rgba(55,50,47,0.10)]">
+                      <Image
+                        src="/dashboard.png"
+                        alt="The Visilm dashboard: AI visibility score, brand mention rate, citation rate and share of voice, with a visibility trend by engine"
+                        width={1465}
+                        height={757}
+                        sizes="(max-width: 1300px) 100vw, 1300px"
+                        priority
+                        className="h-auto w-full"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
 
