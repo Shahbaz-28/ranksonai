@@ -1,14 +1,16 @@
-import Image from "next/image"
 import Link from "next/link"
 
 import FAQSection from "../components/faq-section"
 import PricingSection from "../components/pricing-section"
-import CTASection from "../components/cta-section"
 import FooterSection from "../components/footer-section"
 import SiteNav from "../components/site-nav"
 import JsonLd from "../components/json-ld"
-import ProductTour from "../components/product-tour"
-import { EngineCoverage, PlatformSections, Principles, TheLoop } from "../components/landing-sections"
+import HeroDashboard from "../components/hero-dashboard"
+import HeroAnswerStream from "../components/hero-answer-stream"
+import HeroScoreCheck from "../components/hero-score-check"
+import NeuralField from "../components/neural-field"
+import EngineIcons from "../components/engine-icons"
+import { Principles, ProofBar, TheLoop } from "../components/landing-sections"
 import { faqData } from "@/lib/faq-data"
 import { breadcrumbSchema, faqSchema, jsonLdGraph } from "@/lib/seo"
 
@@ -27,64 +29,94 @@ export default function LandingPage() {
 
             <main className="pt-12 sm:pt-14 md:pt-16 lg:pt-[120px] flex flex-col justify-start items-center w-full">
               {/* ------------------------------ Hero ------------------------------ */}
-              <div className="px-2 sm:px-4 md:px-8 lg:px-0 w-full flex flex-col items-center pb-8 sm:pb-12 md:pb-16">
-                <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                  <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-                    <h1 className="w-full max-w-[748.71px] lg:w-[748.71px] mx-auto text-center text-balance text-[#37322F] text-[28px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-normal leading-[1.15] md:leading-[1.1] font-serif px-2 sm:px-4 md:px-0">
+              <div className="relative px-2 sm:px-4 md:px-8 lg:px-0 w-full flex flex-col items-center pb-8 sm:pb-12 md:pb-16">
+                {/* Atmosphere — the field photograph, dissolved into the page */}
+                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-40 h-[1000px] z-0 overflow-hidden">
+                  {/* The image, desaturated and faded so it reads as weather, not as a photo */}
+                  <div
+                    className="absolute inset-0 bg-[url('/bg.webp')] bg-cover bg-top bg-no-repeat"
+                    style={{
+                      opacity: 0.5,
+                      filter: "saturate(0.62) contrast(0.94)",
+                      maskImage:
+                        "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, #000 22%, #000 50%, rgba(0,0,0,0.45) 74%, transparent 94%)",
+                      WebkitMaskImage:
+                        "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, #000 22%, #000 50%, rgba(0,0,0,0.45) 74%, transparent 94%)",
+                    }}
+                  />
+                  {/* Pull the cool photo toward the warm palette */}
+                  <div
+                    className="absolute inset-0 mix-blend-soft-light"
+                    style={{ background: "linear-gradient(180deg, rgba(247,245,243,0.5) 0%, rgba(214,189,160,0.55) 100%)" }}
+                  />
+                  {/* Side vignettes so it never meets the page edges hard */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #F7F5F3 0%, rgba(247,245,243,0) 18%, rgba(247,245,243,0) 82%, #F7F5F3 100%)",
+                    }}
+                  />
+                  {/* A little motion over the stillness */}
+                  <NeuralField className="absolute inset-0 h-full w-full opacity-40" />
+                  {/* Keep the copy on clean cream */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(44% 34% at 50% 27%, rgba(247,245,243,0.92) 0%, rgba(247,245,243,0.62) 50%, rgba(247,245,243,0) 78%)",
+                    }}
+                  />
+                </div>
+                <div className="relative z-10 w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-5 sm:gap-6">
+                  {/* Who this is for */}
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(55,50,47,0.12)] bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-[#49423D] shadow-[0px_1px_2px_rgba(55,50,47,0.06)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#1baf7a]" />
+                    AI search visibility for B2B teams
+                  </span>
+
+                  <div className="self-stretch flex flex-col justify-center items-center gap-5 sm:gap-6">
+                    <h1 className="w-full max-w-[800px] mx-auto text-center text-balance text-[#37322F] text-[34px] sm:text-[48px] md:text-[62px] lg:text-[80px] font-normal leading-[1.08] tracking-[-0.015em] font-serif px-2 sm:px-4 md:px-0">
                       Get recommended when buyers search AI for you
                     </h1>
-                    <p className="w-full max-w-[620px] lg:w-[620px] mx-auto text-center text-pretty text-[rgba(55,50,47,0.80)] text-sm sm:text-base md:text-lg leading-[1.5] md:leading-[1.6] font-sans font-medium px-2 sm:px-4 md:px-0">
-                      Visilm finds where AI search engine citations miss your brand, fixes the source signals, and
-                      tracks your visibility score.
+                    <p className="w-full max-w-[600px] mx-auto text-center text-pretty text-[rgba(55,50,47,0.78)] text-[16px] sm:text-[18px] md:text-[19px] leading-[1.6] font-sans font-medium px-2 sm:px-4 md:px-0">
+                      <strong className="font-semibold text-[#37322F]">Track</strong> where AI engines name you.{" "}
+                      <strong className="font-semibold text-[#37322F]">Fix</strong> the sources they pull from.{" "}
+                      <strong className="font-semibold text-[#37322F]">Become</strong> the brand they recommend.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 relative z-10 mt-8 sm:mt-10 md:mt-12">
-                  <Link
-                    href="/onboarding"
-                    className="h-11 md:h-12 px-7 sm:px-9 md:px-11 relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center transition-colors hover:bg-[#2A2520]"
-                  >
-                    <span className="flex flex-col justify-center text-white text-sm sm:text-base md:text-[15px] font-medium leading-5 font-sans">
-                      Get AI Visibility Score
-                    </span>
-                  </Link>
-                  <Link
-                    href="/dashboard"
-                    className="h-11 md:h-12 px-7 sm:px-9 md:px-10 rounded-full border border-[rgba(55,50,47,0.18)] bg-white flex justify-center items-center text-[#37322F] text-sm sm:text-base md:text-[15px] font-medium transition-colors hover:border-[rgba(55,50,47,0.35)]"
-                  >
-                    See a live workspace
-                  </Link>
+                {/* The engines we read */}
+                <div className="relative z-10 mt-5 sm:mt-6">
+                  <EngineIcons />
                 </div>
 
-                <p className="mt-4 text-[12.5px] text-[rgba(73,66,61,0.55)]">
-                  No credit card · Your first scan runs in minutes
-                </p>
+                {/* Working front door */}
+                <div className="relative z-10 mt-11 sm:mt-12 flex w-full flex-col items-center px-2">
+                  <HeroScoreCheck />
+                </div>
 
-                {/* Product shot */}
-                <div className="w-full max-w-[1300px] lg:w-[1300px] px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center mt-10 sm:mt-14 md:mt-16">
-                  <div className="w-full aspect-[1735/906] h-auto bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-[6px] sm:rounded-[8px] lg:rounded-[9.06px] relative">
-                    <Image
-                      src="/visilm-dashboard.png"
-                      alt="Visilm dashboard showing AI visibility score, cited sources and competitor share of voice"
-                      fill
-                      sizes="(max-width: 1400px) 100vw, 1300px"
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
+                {/* The hook: an answer writing itself, without you in it */}
+                <div className="relative z-10 w-full max-w-[820px] px-1 sm:px-2 mt-12 sm:mt-14 md:mt-16">
+                  <HeroAnswerStream />
+                  <p className="mt-3.5 text-center text-[13px] text-[rgba(73,66,61,0.55)]">
+                    This is what your buyers see. Visilm tracks it on every engine, every week.
+                  </p>
+                </div>
+
+                {/* And here is where it lands */}
+                <div className="relative z-10 w-full max-w-[1300px] lg:w-[1300px] px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center mt-16 sm:mt-20 md:mt-24">
+                  <HeroDashboard />
                 </div>
               </div>
 
               {/* ------------------------- Body sections ------------------------- */}
-              <EngineCoverage />
-              <ProductTour />
+              <ProofBar />
               <TheLoop />
-              <PlatformSections />
               <Principles />
               <PricingSection />
               <FAQSection />
-              <CTASection />
             </main>
 
             <FooterSection />

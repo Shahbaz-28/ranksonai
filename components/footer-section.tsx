@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function FooterSection() {
   return (
-    <footer className="w-full pt-10 flex flex-col justify-start items-start">
+    <footer className="w-full pt-2 flex flex-col justify-start items-start">
       {/* Main Footer Content */}
       <div className="self-stretch h-auto flex flex-col md:flex-row justify-between items-stretch pr-0 pb-8 pt-0">
         <div className="h-auto p-4 md:p-8 flex flex-col justify-start items-start gap-8">

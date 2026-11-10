@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowRight, Check, Plus, X } from "lucide-react"
 
 import { business, competitors } from "@/lib/mock"
@@ -52,12 +52,32 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(1)
   const [domain, setDomain] = useState<string>(business.domain)
   const [company, setCompany] = useState<string>(business.name)
+  const [fromHero, setFromHero] = useState(false)
   const [industry, setIndustry] = useState<string>(business.industry)
   const [location, setLocation] = useState<string>(business.hq)
   const [services, setServices] = useState<string[]>(suggestedServices.slice(0, 4))
   const [serviceDraft, setServiceDraft] = useState("")
   const [rivals, setRivals] = useState<string[]>(suggestedCompetitors.slice(0, 3))
   const [rivalDraft, setRivalDraft] = useState("")
+
+  /**
+   * Carry the domain typed in the marketing hero straight into step 1, and
+   * guess a company name from it so the first field isn't empty. Read from
+   * `location.search` rather than useSearchParams so the route can stay
+   * statically rendered.
+   */
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get("domain")
+    if (!raw) return
+
+    const clean = raw.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0]
+    if (!clean) return
+
+    const guess = clean.split(".")[0].replace(/[-_]+/g, " ")
+    setDomain(clean)
+    setCompany(guess.charAt(0).toUpperCase() + guess.slice(1))
+    setFromHero(true)
+  }, [])
 
   const canContinue =
     step === 1 ? domain.trim().length > 3 && company.trim().length > 1 : step === 2 ? Boolean(industry && location.trim()) : step === 3 ? services.length > 0 : rivals.length > 0
@@ -129,6 +149,12 @@ export default function OnboardingPage() {
       <Card className="p-6">
         {step === 1 && (
           <div className="flex flex-col gap-5">
+            {fromHero && (
+              <p className="rounded-lg border border-[rgba(12,163,12,0.25)] bg-[rgba(12,163,12,0.06)] px-3.5 py-2.5 text-[12.5px] leading-5 text-[#1f6b1f]">
+                Starting from <strong className="font-semibold">{domain}</strong> — we guessed the company name, so
+                correct it if it&apos;s off.
+              </p>
+            )}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-1.5">
                 <span className="text-[12px] font-medium text-[#49423D]">Business website</span>

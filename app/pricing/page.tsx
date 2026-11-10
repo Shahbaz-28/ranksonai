@@ -84,7 +84,7 @@ export default function PricingPage() {
         )}
       />
 
-      <PricingSection />
+      <PricingSection showHeader={false} />
 
       {/* What's included in every plan */}
       <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center gap-8">

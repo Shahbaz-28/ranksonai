@@ -15,9 +15,14 @@ export const siteConfig = {
     "Visilm tracks whether ChatGPT, Perplexity, Gemini, Claude, Grok, and Copilot recommend your brand to B2B buyers, finds the queries where competitors are cited instead, and fixes the source signals behind them.",
   shortDescription: "Get cited and recommended when B2B buyers ask AI which vendor to hire.",
   locale: "en_US",
-  ogImage: "/visilm-dashboard.png",
-  ogImageWidth: 1735,
-  ogImageHeight: 906,
+  /**
+   * Social share image. Set this to "/og.png" once a real 1200x630 asset is in
+   * `public/` — until then the metadata below omits the image rather than
+   * pointing at a file that does not exist.
+   */
+  ogImage: "",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterHandle: "@visilm",
   email: "hello@visilm.com",
   social: ["https://x.com/visilm", "https://www.linkedin.com/company/visilm", "https://github.com/visilm"],
@@ -39,12 +44,14 @@ export const siteConfig = {
 
 export const absoluteUrl = (path = "/") => new URL(path, siteConfig.url).toString()
 
-export const ogImage = {
-  url: absoluteUrl(siteConfig.ogImage),
-  width: siteConfig.ogImageWidth,
-  height: siteConfig.ogImageHeight,
-  alt: `${siteConfig.name} - ${siteConfig.title}`,
-}
+export const ogImage = siteConfig.ogImage
+  ? {
+      url: absoluteUrl(siteConfig.ogImage),
+      width: siteConfig.ogImageWidth,
+      height: siteConfig.ogImageHeight,
+      alt: `${siteConfig.name} - ${siteConfig.title}`,
+    }
+  : null
 
 /** Page-level metadata builder: keeps canonical + OG + Twitter in sync. */
 export function buildMetadata({
@@ -74,15 +81,15 @@ export function buildMetadata({
       title,
       description,
       locale: siteConfig.locale,
-      images: [ogImage],
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
     twitter: {
-      card: "summary_large_image",
+      card: ogImage ? "summary_large_image" : "summary",
       title,
       description,
       site: siteConfig.twitterHandle,
       creator: siteConfig.twitterHandle,
-      images: [ogImage.url],
+      ...(ogImage ? { images: [ogImage.url] } : {}),
     },
     ...(noIndex ? { robots: { index: false, follow: true, nocache: true } } : {}),
   }
@@ -100,7 +107,7 @@ export const organizationSchema = {
     "@type": "ImageObject",
     url: absoluteUrl("/icon.svg"),
   },
-  image: ogImage.url,
+  ...(ogImage ? { image: ogImage.url } : {}),
   description: siteConfig.description,
   email: siteConfig.email,
   foundingDate: "2023",

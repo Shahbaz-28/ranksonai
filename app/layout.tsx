@@ -44,15 +44,15 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} - ${siteConfig.title}`,
     description: siteConfig.description,
     locale: siteConfig.locale,
-    images: [ogImage],
+    ...(ogImage ? { images: [ogImage] } : {}),
   },
   twitter: {
-    card: "summary_large_image",
+    card: ogImage ? "summary_large_image" : "summary",
     title: `${siteConfig.name} - ${siteConfig.title}`,
     description: siteConfig.description,
     site: siteConfig.twitterHandle,
     creator: siteConfig.twitterHandle,
-    images: [ogImage.url],
+    ...(ogImage ? { images: [ogImage.url] } : {}),
   },
   robots: {
     index: true,

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Card, PriorityBadge, StatusBadge, Tag } from "@/components/dashboard/kit"
 import { RankedBars } from "@/components/dashboard/bars"
 import { series, status } from "@/components/dashboard/tokens"
+import Reveal from "@/components/reveal"
 
 /**
  * Three real dashboard surfaces, rendered with the same primitives the product
@@ -105,21 +106,21 @@ export default function ProductTour() {
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
     >
-      <div className="mx-auto w-full max-w-[1100px]">
-        <div className="max-w-[640px]">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(73,66,61,0.55)]">
+      <Reveal className="mx-auto w-full max-w-[1100px]">
+        <div className="max-w-[680px]">
+          <div className="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[rgba(73,66,61,0.5)]">
             Inside the product
           </div>
-          <h2 className="mt-2 text-[#37322F] text-[28px] sm:text-[34px] md:text-[40px] font-normal leading-[1.15] font-serif text-balance">
+          <h2 className="mt-3 text-[#37322F] text-[32px] sm:text-[40px] md:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] font-serif text-balance">
             Not a score. A paper trail.
           </h2>
-          <p className="mt-3 text-[15px] leading-7 text-[#605A57] text-pretty">
+          <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.65] text-[#605A57] text-pretty">
             Every number traces back to a prompt, an answer and a source you can read yourself.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-0 border border-[rgba(55,50,47,0.10)] rounded-xl overflow-hidden bg-white">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-0 border border-[rgba(55,50,47,0.10)] rounded-xl overflow-hidden bg-white shadow-[0px_1px_3px_rgba(55,50,47,0.06)]">
           {TABS.map((tab, i) => {
             const isActive = i === active
             return (
@@ -171,7 +172,7 @@ export default function ProductTour() {
           {active === 1 && <CausePanel />}
           {active === 2 && <FixPanel />}
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

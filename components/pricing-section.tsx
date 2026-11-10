@@ -2,7 +2,11 @@
 
 import { useState } from "react"
 
-export default function PricingSection() {
+/**
+ * @param showHeader  Pass false where the surrounding page already renders a
+ *                    badge/title/description, so the two don't stack up.
+ */
+export default function PricingSection({ showHeader = true }: { showHeader?: boolean }) {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">("annually")
 
   const pricing = {
@@ -22,9 +26,10 @@ export default function PricingSection() {
 
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2">
-      {/* Header Section */}
-      <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
-        <div className="w-full max-w-[586px] px-6 py-5 shadow-[0px_2px_4px_rgba(50,45,43,0.06)] overflow-hidden rounded-lg flex flex-col justify-start items-center gap-4 shadow-none">
+      {/* Header Section — hidden where the page already supplies a heading */}
+      {showHeader && (
+      <div className="self-stretch px-6 md:px-24 py-10 md:py-12 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
+        <div className="w-full max-w-[586px] flex flex-col justify-start items-center gap-4">
           {/* Pricing Badge */}
           <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)] shadow-xs">
             <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">
@@ -56,11 +61,12 @@ export default function PricingSection() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Billing Toggle Section */}
-      <div className="self-stretch px-6 md:px-16 py-9 relative flex justify-center items-center gap-4">
+      <div className="self-stretch px-6 md:px-16 py-7 relative flex justify-center items-center gap-4">
         {/* Horizontal line */}
-        <div className="w-full max-w-[1400px] h-0 absolute left-1/2 transform -translate-x-1/2 top-[63px] border-t border-[rgba(55,50,47,0.12)] z-0"></div>
+        <div className="w-full max-w-[1400px] h-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-t border-[rgba(55,50,47,0.12)] z-0"></div>
 
         {/* Toggle Container */}
         <div className="p-3 relative bg-[rgba(55,50,47,0.03)] border border-[rgba(55,50,47,0.02)] backdrop-blur-[44px] backdrop-saturate-150 backdrop-brightness-110 flex justify-center items-center rounded-lg z-20 before:absolute before:inset-0 before:bg-white before:opacity-60 before:rounded-lg before:-z-10">
@@ -122,14 +128,14 @@ export default function PricingSection() {
           </div>
 
           {/* Pricing Cards Container */}
-          <div className="flex-1 flex flex-col md:flex-row justify-center items-center gap-6 py-12 md:py-0">
+          <div className="flex-1 flex flex-col md:flex-row justify-center items-stretch gap-4 py-10 md:py-0">
             {/* Starter Plan */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 border border-[rgba(50,45,43,0.12)] border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-12 bg-[rgba(255,255,255,0)]">
+            <div className="flex-1 md:basis-0 max-w-full md:max-w-none self-stretch px-6 py-7 border border-[rgba(50,45,43,0.12)] border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-7 bg-[rgba(255,255,255,0)]">
               {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+              <div className="self-stretch flex flex-col justify-start items-center gap-6">
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">Starter</div>
-                  <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
+                  <div className="w-full max-w-[242px] min-h-10 text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
                     Perfect for tracking basic AI engine visibility.
                   </div>
                 </div>
@@ -169,7 +175,7 @@ export default function PricingSection() {
 
                 <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+                  <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
                     Start for free
                   </div>
                 </div>
@@ -204,12 +210,12 @@ export default function PricingSection() {
             </div>
 
             {/* Professional Plan (Featured) */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-hidden flex flex-col justify-start items-start gap-12">
+            <div className="flex-1 md:basis-0 max-w-full md:max-w-none self-stretch px-6 py-7 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-hidden flex flex-col justify-start items-start gap-7">
               {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+              <div className="self-stretch flex flex-col justify-start items-center gap-6">
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[#FBFAF9] text-lg font-medium leading-7 font-sans">Professional</div>
-                  <div className="w-full max-w-[242px] text-[#B2AEA9] text-sm font-normal leading-5 font-sans">
+                  <div className="w-full max-w-[242px] min-h-10 text-[#B2AEA9] text-sm font-normal leading-5 font-sans">
                     Advanced tools for growing teams optimizing AI share.
                   </div>
                 </div>
@@ -250,7 +256,7 @@ export default function PricingSection() {
                 {/* CTA Button */}
                 <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
+                  <div className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
                     Get started
                   </div>
                 </div>
@@ -286,12 +292,12 @@ export default function PricingSection() {
             </div>
 
             {/* Enterprise Plan */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 bg-white border border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-12">
+            <div className="flex-1 md:basis-0 max-w-full md:max-w-none self-stretch px-6 py-7 bg-white border border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-7">
               {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+              <div className="self-stretch flex flex-col justify-start items-center gap-6">
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">Enterprise</div>
-                  <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
+                  <div className="w-full max-w-[242px] min-h-10 text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
                     Full-scale managed AI visibility for larger enterprises.
                   </div>
                 </div>
@@ -331,7 +337,7 @@ export default function PricingSection() {
 
                 <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+                  <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
                     Contact sales
                   </div>
                 </div>
