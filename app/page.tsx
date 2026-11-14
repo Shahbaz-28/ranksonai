@@ -31,7 +31,19 @@ export default function LandingPage() {
               {/* ------------------------------ Hero ------------------------------ */}
               <div className="relative px-2 sm:px-4 md:px-8 lg:px-0 w-full flex flex-col items-center pb-8 sm:pb-12 md:pb-16">
                 {/* Atmosphere — the field photograph, dissolved into the page */}
-                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-40 h-[1000px] z-0 overflow-hidden">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 -top-40 h-[1000px] z-0 overflow-hidden"
+                  style={{
+                    // Every layer below fades out on the same curve, so the
+                    // atmosphere dissolves into the page instead of ending on a
+                    // hard horizontal edge where the container stops.
+                    maskImage:
+                      "linear-gradient(180deg, #000 0%, #000 52%, rgba(0,0,0,0.6) 76%, rgba(0,0,0,0.2) 90%, transparent 99%)",
+                    WebkitMaskImage:
+                      "linear-gradient(180deg, #000 0%, #000 52%, rgba(0,0,0,0.6) 76%, rgba(0,0,0,0.2) 90%, transparent 99%)",
+                  }}
+                >
                   {/* The image, desaturated and faded so it reads as weather, not as a photo */}
                   <div
                     className="absolute inset-0 bg-[url('/bg.webp')] bg-cover bg-top bg-no-repeat"

@@ -163,14 +163,29 @@ Per tenant, 240 prompts × 5 providers, **weekly** = 4,800 collections/month.
 - Rule of thumb: **$150 fixed + ~$80 per customer per month**
 - Analysis is nearly free (~$1.50/mo of Haiku). Acquisition is the entire bill.
 
-**Pricing must follow cost.** `components/pricing-section.tsx` currently offers $20/mo for daily
-scans across all providers — that loses ~$450 per customer per month. Target shape:
+**Pricing must follow cost.** Three dials drive the bill — prompts x engines x cadence — so those
+are the three dials the tiers sell. Priced per workspace, never per seat: seats cost us nothing.
 
-| Tier | Prompts | Providers | Cadence | Price |
-|---|---|---|---|---|
-| Starter | 25 | 2 | weekly | $49 |
-| Pro | 100 | 5 | weekly | $199 |
-| Scale | 240+ | 5 | daily | $499+ |
+Shipped 2026-11-11 in `components/pricing-section.tsx`, `app/pricing/page.tsx` and `lib/seo.ts`.
+Costed at $0.014 per collection (conservative blend) and 4.33 weeks/month.
+
+| Tier | Prompts | Engines | Cadence | Collections/mo | Our cost | Price | Margin |
+|---|---|---|---|---|---|---|---|
+| Starter | 50 | 3 | weekly | 650 | ~$9 | $49 | 81% |
+| Professional | 150 | 5 | weekly | 3,250 | ~$46 | $199 | 77% |
+| Enterprise | 400 | 5 | weekly + daily on 25 | 12,400 | ~$174 | $499 | 65% |
+
+Annual billing is -20% ($39 / $159 / $399 per month). Breakeven on the ~$150/mo fixed platform
+cost is **4 Professional customers**.
+
+**Two traps this replaces, both of which were live on the site:**
+- *Daily scans on everything.* 240 prompts x 5 engines daily is ~$500/mo of API — the entire
+  $499 tier revenue. Daily is sold only on a **capped priority subset**, never on the full set.
+- *Per-seat pricing.* Cost scales with collections, not logins. A 10-seat team on the old
+  $20/seat Professional would have paid $200 while consuming ~$1,170.
+
+**No tier may promise "unlimited prompts" or "hourly monitoring".** Both are unbounded spend
+against fixed revenue. `plan_limits` is the enforcement point and the budget gate reads it.
 
 ---
 

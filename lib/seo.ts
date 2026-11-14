@@ -141,7 +141,7 @@ export const softwareApplicationSchema = {
     {
       "@type": "Offer",
       name: "Starter",
-      price: "0",
+      price: "39",
       priceCurrency: "USD",
       url: absoluteUrl("/pricing"),
       availability: "https://schema.org/InStock",
@@ -149,7 +149,7 @@ export const softwareApplicationSchema = {
     {
       "@type": "Offer",
       name: "Professional",
-      price: "16",
+      price: "159",
       priceCurrency: "USD",
       url: absoluteUrl("/pricing"),
       availability: "https://schema.org/InStock",
@@ -157,7 +157,7 @@ export const softwareApplicationSchema = {
     {
       "@type": "Offer",
       name: "Enterprise",
-      price: "160",
+      price: "399",
       priceCurrency: "USD",
       url: absoluteUrl("/pricing"),
       availability: "https://schema.org/InStock",

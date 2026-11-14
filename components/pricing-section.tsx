@@ -11,16 +11,16 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
 
   const pricing = {
     starter: {
-      monthly: 0,
-      annually: 0,
+      monthly: 49,
+      annually: 39, // 20% discount for annual
     },
     professional: {
-      monthly: 20,
-      annually: 16, // 20% discount for annual
+      monthly: 199,
+      annually: 159, // 20% discount for annual
     },
     enterprise: {
-      monthly: 200,
-      annually: 160, // 20% discount for annual
+      monthly: 499,
+      annually: 399, // 20% discount for annual
     },
   }
 
@@ -55,9 +55,9 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
 
           {/* Description */}
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Scale your operations with flexible pricing that grows with your team.
+            Every plan starts with one free scan, no card required.
             <br />
-            Start free, upgrade when you're ready.
+            Priced per workspace by prompts, engines and scan frequency &mdash; never per seat.
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">Starter</div>
                   <div className="w-full max-w-[242px] min-h-10 text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Perfect for tracking basic AI engine visibility.
+50 prompts across 3 engines, scanned weekly. Enough to see where you stand.
                   </div>
                 </div>
 
@@ -168,7 +168,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                       </span>
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per user.
+                      per month, per workspace{billingPeriod === "annually" ? ", billed annually" : ""}.
                     </div>
                   </div>
                 </div>
@@ -176,18 +176,19 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                 <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
                   <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
-                    Start for free
+                    Start with Starter
                   </div>
                 </div>
               </div>
 
               <div className="self-stretch flex flex-col justify-start items-start gap-2">
                 {[
-                  "Track up to 3 core queries",
-                  "Weekly visibility scans",
-                  "Standard ChatGPT & Claude metrics",
-                  "Basic citation reports",
-                  "Standard email support",
+                  "50 tracked prompts",
+                  "3 engines: Perplexity, ChatGPT, Gemini",
+                  "Weekly scans, every answer kept verbatim",
+                  "Gap list and cited-source report",
+                  "3 competitors tracked",
+                  "1 seat, email support",
                 ].map((feature, index) => (
                   <div key={index} className="self-stretch flex justify-start items-center gap-[13px]">
                     <div className="w-4 h-4 relative flex items-center justify-center">
@@ -216,7 +217,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[#FBFAF9] text-lg font-medium leading-7 font-sans">Professional</div>
                   <div className="w-full max-w-[242px] min-h-10 text-[#B2AEA9] text-sm font-normal leading-5 font-sans">
-                    Advanced tools for growing teams optimizing AI share.
+150 prompts across all 5 engines, with the diagnosis and the fix list.
                   </div>
                 </div>
 
@@ -248,7 +249,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                       </span>
                     </div>
                     <div className="text-[#D2C6BF] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per user.
+                      per month, per workspace{billingPeriod === "annually" ? ", billed annually" : ""}.
                     </div>
                   </div>
                 </div>
@@ -264,14 +265,14 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
 
               <div className="self-stretch flex flex-col justify-start items-start gap-2">
                 {[
-                  "Track up to 50 search queries",
-                  "Daily visibility scans",
-                  "Full citation path diagnostics",
-                  "Signal optimization recommendations",
-                  "Real-time lead tracking",
-                  "Priority email & Slack alerts",
-                  "API access",
-                  "Competitor citation metrics",
+                  "150 tracked prompts",
+                  "All 5 engines, every scan",
+                  "Weekly scans + 4 on-demand re-scans a month",
+                  "Prioritised fixes with the evidence attached",
+                  "Website, schema and content audit",
+                  "10 competitors with share of voice",
+                  "10 seats",
+                  "Priority email and Slack alerts",
                 ].map((feature, index) => (
                   <div key={index} className="self-stretch flex justify-start items-center gap-[13px]">
                     <div className="w-4 h-4 relative flex items-center justify-center">
@@ -298,7 +299,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">Enterprise</div>
                   <div className="w-full max-w-[242px] min-h-10 text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Full-scale managed AI visibility for larger enterprises.
+400 prompts, daily tracking on the ones that matter most, and a human on it.
                   </div>
                 </div>
 
@@ -330,7 +331,7 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
                       </span>
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per user.
+                      per month, per workspace{billingPeriod === "annually" ? ", billed annually" : ""}.
                     </div>
                   </div>
                 </div>
@@ -346,13 +347,13 @@ export default function PricingSection({ showHeader = true }: { showHeader?: boo
               <div className="self-stretch flex flex-col justify-start items-start gap-2">
                 {[
                   "Everything in Professional",
-                  "Unlimited search queries",
-                  "Hour-by-hour prompt monitoring",
-                  "Custom content signal publishing",
-                  "Dedicated visibility strategist",
-                  "24/7 priority phone & Slack support",
-                  "SOC 2 compliance support",
-                  "Advanced security & SSO",
+                  "400 tracked prompts",
+                  "Daily scans on 25 priority prompts",
+                  "Content briefs with draft review",
+                  "Monthly report and strategy review",
+                  "25 competitors tracked",
+                  "Unlimited seats, SSO",
+                  "Dedicated contact, SOC 2 support",
                 ].map((feature, index) => (
                   <div key={index} className="self-stretch flex justify-start items-center gap-[13px]">
                     <div className="w-4 h-4 relative flex items-center justify-center">

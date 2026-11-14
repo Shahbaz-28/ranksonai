@@ -19,7 +19,7 @@ import NeuralField from "@/components/neural-field"
  * no ratings we don't have.
  */
 const FACTS = [
-  { n: 240, suffix: "", label: "prompts per workspace", sub: "across five buying stages" },
+  { n: 400, suffix: "", label: "prompts per workspace", sub: "up to, across five buying stages" },
   { n: 5, suffix: "", label: "answer engines", sub: "every scan, every week" },
   { n: 100, suffix: "%", label: "answers kept verbatim", sub: "re-readable months later" },
   { n: 0, suffix: "", label: "numbers without evidence", sub: "each one links to its source" },

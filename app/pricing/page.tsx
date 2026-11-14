@@ -9,7 +9,7 @@ import { breadcrumbSchema, buildMetadata, faqSchema, jsonLdGraph, softwareApplic
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Simple plans for B2B teams tracking AI search visibility across ChatGPT, Perplexity, Gemini, Claude, Grok, and Copilot. Start free, upgrade when you need daily coverage and competitor benchmarks.",
+    "Plans for B2B teams tracking AI search visibility across ChatGPT, Perplexity, Gemini, Claude and Copilot. Start with a free scan, then pick the prompt volume, engine coverage and scan frequency you need.",
   path: "/pricing",
   keywords: [
     "AI visibility pricing",
@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
 const included = [
   {
     title: "Citation tracking",
-    description: "Daily runs of your buyer-intent prompts across every major AI answer engine.",
+    description: "Weekly runs of your buyer-intent prompts across every major AI answer engine.",
   },
   {
     title: "Competitor share",
@@ -39,14 +39,16 @@ const included = [
 ]
 
 const planComparison = [
-  { feature: "Tracked prompts", starter: "25", professional: "500", enterprise: "Unlimited" },
-  { feature: "AI engines monitored", starter: "2", professional: "6", enterprise: "6 + custom" },
-  { feature: "Refresh frequency", starter: "Weekly", professional: "Daily", enterprise: "Hourly" },
-  { feature: "Competitor tracking", starter: "1 brand", professional: "10 brands", enterprise: "Unlimited" },
-  { feature: "Content signal audits", starter: "—", professional: "Monthly", enterprise: "Continuous" },
+  { feature: "Tracked prompts", starter: "50", professional: "150", enterprise: "400" },
+  { feature: "AI engines monitored", starter: "3", professional: "5", enterprise: "5" },
+  { feature: "Scan frequency", starter: "Weekly", professional: "Weekly", enterprise: "Weekly + daily on 25" },
+  { feature: "On-demand re-scans", starter: "—", professional: "4 / month", enterprise: "20 / month" },
+  { feature: "Verbatim answer archive", starter: "Included", professional: "Included", enterprise: "Included" },
+  { feature: "Competitor tracking", starter: "3 brands", professional: "10 brands", enterprise: "25 brands" },
+  { feature: "Website & content audit", starter: "—", professional: "Monthly", enterprise: "Monthly + briefs" },
   { feature: "Seats", starter: "1", professional: "10", enterprise: "Unlimited" },
   { feature: "SSO & SOC 2 support", starter: "—", professional: "—", enterprise: "Included" },
-  { feature: "Support", starter: "Email", professional: "Priority email", enterprise: "Dedicated expert" },
+  { feature: "Support", starter: "Email", professional: "Priority email", enterprise: "Dedicated contact" },
 ]
 
 const pricingFaq = [
@@ -62,7 +64,18 @@ const pricingFaq = [
   },
   {
     question: "Do you offer annual billing?",
-    answer: "Annual billing saves 20% on the Professional and Enterprise plans and can be invoiced for procurement.",
+    answer:
+      "Annual billing saves 20% on every plan and can be invoiced for procurement. Prices shown are per month, per workspace.",
+  },
+  {
+    question: "Is there a free plan?",
+    answer:
+      "There is a free scan rather than a free plan. You get one full scan of 25 prompts across 2 engines so you can see real results for your own site before paying. Every answer we collect costs us money to fetch, so recurring scans sit on a paid plan.",
+  },
+  {
+    question: "Why is pricing not per seat?",
+    answer:
+      "Our cost scales with how many prompts you track, how many engines we ask and how often we re-scan — not with how many people log in. So that is what you pay for, and seats are included in the plan.",
   },
 ]
 
@@ -71,7 +84,7 @@ export default function PricingPage() {
     <PageShell
       badge="Plans & Pricing"
       title="Pricing that scales with your AI visibility"
-      description="Start on the free tier to see where AI engines already mention you. Move up when you want daily coverage, competitor benchmarks, and hands-on signal fixes."
+      description="Run one free scan to see where AI engines already mention you. Move up when you want more prompts, every engine, and hands-on fixes."
     >
       <JsonLd
         data={jsonLdGraph(
@@ -93,7 +106,7 @@ export default function PricingPage() {
             Included in every plan
           </h2>
           <p className="text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Even the free tier gives you a real read on how AI engines answer your category.
+            Every plan archives each answer word for word, so last month's result is still there to compare against.
           </p>
         </div>
         <div className="w-full max-w-[1060px] grid grid-cols-1 sm:grid-cols-2 gap-4">
